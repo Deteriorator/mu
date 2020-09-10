@@ -16,6 +16,8 @@ matrix:
       sudo: required
       language: python
       python: 3.7
+    - os: linux
+      arch: arm64
     - os: osx
       # match xcode version with earliest supported by current PyQt 
       # (earliest to maximize compatibility)
