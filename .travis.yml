@@ -55,7 +55,7 @@ before_install:
 
 install:
   # Install Mu and its dependencies
-  - pip install .[dev]
+  - pip install .[dev] --extra-index-url https://www.piwheels.org/simple
   # Check everything was correctly installed
   - pip freeze
 
