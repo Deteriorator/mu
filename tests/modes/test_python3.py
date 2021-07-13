@@ -297,8 +297,7 @@ def test_python_stop_script():
     mock_runner = mock.MagicMock()
     pm.runner = mock_runner
     pm.stop_script()
-    mock_runner.process.kill.assert_called_once_with()
-    mock_runner.process.waitForFinished.assert_called_once_with()
+    mock_runner.stop_process.assert_called_once_with()
     assert pm.runner is None
 
 
@@ -377,9 +376,7 @@ def test_python_add_repl():
         pm.add_repl()
     mock_qthread.assert_called_once_with()
     mock_kernel_runner.assert_called_once_with(
-        kernel_name="name",
-        cwd=pm.workspace_dir(),
-        envars=editor.envars,
+        kernel_name="name", cwd=pm.workspace_dir(), envars=editor.envars
     )
     assert pm.kernel_thread == mock_qthread()
     assert pm.kernel_runner == mock_kernel_runner()
